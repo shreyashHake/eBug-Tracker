@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -14,5 +16,6 @@ public class BugDTO {
     private String bug_title;
     private String bug_desc;
     private String bug_status;
+    private LocalDate createdDate;
     private CustomerProjectDTO customerProject;
 }

@@ -33,6 +33,7 @@ public class DtoHelper {
                 customerProject.getProjectName(),
                 customerProject.getProjectDomain(),
                 customerProject.getProjectDesc(),
+                customerProject.getCreatedDate(),
                 getCustomerProfileDto(customerProject.getCustomerProfile())
         );
     }
@@ -43,6 +44,7 @@ public class DtoHelper {
                 bug.getBug_title(),
                 bug.getBug_desc(),
                 bug.getBug_status(),
+                bug.getCreated_date(),
                 getCustomerProjectDto(bug.getCustomerProject())
         );
     }

@@ -15,6 +15,7 @@ import com.springBoot.eBugTracker.util.DtoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class CustomerServiceIMPL implements CustomerService {
 //        System.out.println("Customer Project : " +customerProject);
         CustomerProfile customerProfile = customerProfileRepo.findById(customerProject.getCustomerProfile().getCustomerProfileId()).get();
         customerProject.setCustomerProfile(customerProfile);
+        customerProject.setCreatedDate(LocalDate.now());
 //        System.out.println("Customer Project 1 : " +customerProject);
         return dtoHelper.getCustomerProjectDto(customerProjectRepo.save(customerProject));
     }
@@ -55,6 +57,7 @@ public class CustomerServiceIMPL implements CustomerService {
         CustomerProject customerProject = customerProjectRepo.findById(bug.getCustomerProject().getProjectId()).get();
 //        System.out.println("Customer Project 1 : " +customerProject);
         bug.setCustomerProject(customerProject);
+        bug.setCreated_date(LocalDate.now());
 //        System.out.println("Bug 2 : "+ bug);
         return dtoHelper.getBugDto(bugRepo.save(bug));
     }
