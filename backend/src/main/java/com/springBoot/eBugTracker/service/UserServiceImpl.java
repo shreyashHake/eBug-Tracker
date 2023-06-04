@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     public User createNewUser(User user) {
-        Role role = IRoleRepository.findById("User").get();
+        Role role = IRoleRepository.findById("Customer").get();
 
         user.setUserRole(new HashSet<>(Collections.singletonList(role)));
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
@@ -39,8 +39,6 @@ public class UserServiceImpl implements UserService {
 
         User admin = new User(
                 "admin123",
-                "Admin",
-                "Admin",
                 getEncodedPassword("Pass@123"),
                 new HashSet<>(Collections.singletonList(adminRole))
         );
@@ -55,8 +53,6 @@ public class UserServiceImpl implements UserService {
 
         User customer = new User(
                 "customer123",
-                "Customer",
-                "Customer",
                 getEncodedPassword("Pass@123"),
                 new HashSet<>(Collections.singletonList(customerRole))
 
@@ -72,8 +68,6 @@ public class UserServiceImpl implements UserService {
 
         User staff = new User(
                 "staff123",
-                "Staff",
-                "Staff",
                 getEncodedPassword("Pass@123"),
                 new HashSet<>(Collections.singletonList(staffRole))
 

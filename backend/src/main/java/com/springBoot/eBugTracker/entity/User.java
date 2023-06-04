@@ -1,5 +1,6 @@
 package com.springBoot.eBugTracker.entity;
 
+import com.springBoot.eBugTracker.entity.customer.CustomerProfile;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,12 +18,10 @@ import java.util.Set;
 public class User {
     @Id
     private String userName;
-    private String userFirstName;
-    private String userLastName;
     private String userPassword;
 
     // Association :
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "USER_ROLE",
             joinColumns = {

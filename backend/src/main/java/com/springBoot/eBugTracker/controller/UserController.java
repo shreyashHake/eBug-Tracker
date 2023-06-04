@@ -32,9 +32,15 @@ public class UserController {
         return "This is only for admin";
     }
 
-    @GetMapping({"/forUser"})
-    @PreAuthorize("hasRole('User')")
+    @GetMapping({"/forCustomer"})
+    @PreAuthorize("hasRole('Customer')")
     public String forUser(){
-        return "This is for all user";
+        return "This is for all Customer";
+    }
+
+    @GetMapping({"/forStaff"})
+    @PreAuthorize("hasRole('Staff')")
+    public String forStaff(){
+        return "This is for all Staff";
     }
 }
