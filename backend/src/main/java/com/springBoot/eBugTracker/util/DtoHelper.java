@@ -23,6 +23,9 @@ public class DtoHelper {
                 customerProfile.getCustomerProfileId(),
                 customerProfile.getCustomerName(),
                 customerProfile.getCustomerCompany(),
+                customerProfile.getCustomerPhone(),
+                customerProfile.getIsActive(),
+                customerProfile.getCreatedDate(),
                 getUserDto(customerProfile.getUser())
         );
     }
@@ -33,18 +36,22 @@ public class DtoHelper {
                 customerProject.getProjectName(),
                 customerProject.getProjectDomain(),
                 customerProject.getProjectDesc(),
+                customerProject.getProjectStatus(),
                 customerProject.getCreatedDate(),
+                customerProject.getEndDate(),
                 getCustomerProfileDto(customerProject.getCustomerProfile())
         );
     }
 
     public BugDTO getBugDto(Bug bug){
         return new BugDTO(
-                bug.getBug_id(),
-                bug.getBug_title(),
-                bug.getBug_desc(),
-                bug.getBug_status(),
-                bug.getCreated_date(),
+                bug.getBugId(),
+                bug.getBugTitle(),
+                bug.getBugDesc(),
+                bug.getBugStatus(),
+                bug.getBugPriority(),
+                bug.getCreatedDate(),
+                bug.getEndDate(),
                 getCustomerProjectDto(bug.getCustomerProject())
         );
     }

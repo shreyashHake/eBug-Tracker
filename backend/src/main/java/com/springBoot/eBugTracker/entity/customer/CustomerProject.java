@@ -23,8 +23,11 @@ public class CustomerProject {
     private String projectName;
     private String projectDomain;
     private String projectDesc;
+    private String projectStatus;
     @JsonIgnore
     private LocalDate createdDate;
+    @JsonIgnore
+    private LocalDate endDate;
     @ManyToOne
     @JoinColumn(name = "customerProfileId",nullable = false,referencedColumnName = "customerProfileId")
     private CustomerProfile customerProfile;

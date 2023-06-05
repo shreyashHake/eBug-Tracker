@@ -17,12 +17,15 @@ import java.time.LocalDate;
 public class Bug {
     @Id
     @GeneratedValue
-    private int bug_id;
-    private String bug_title;
-    private String bug_desc;
-    private String bug_status;
+    private int bugId;
+    private String bugTitle;
+    private String bugDesc;
+    private String bugStatus;
+    private String bugPriority;
     @JsonIgnore
-    private LocalDate created_date;
+    private LocalDate createdDate;
+    @JsonIgnore
+    private LocalDate endDate;
     @ManyToOne
     @JoinColumn(name = "projectId",nullable = false,referencedColumnName = "projectId")
     private CustomerProject customerProject;

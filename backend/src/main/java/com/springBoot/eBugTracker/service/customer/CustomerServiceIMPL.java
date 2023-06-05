@@ -33,6 +33,7 @@ public class CustomerServiceIMPL implements CustomerService {
     private DtoHelper dtoHelper;
     @Override
     public CustomerProfileDTO createCustomerProfile(CustomerProfile customerProfile) {
+        customerProfile.setCreatedDate(LocalDate.now());
 //        System.out.println("CP 1 :"+customerProfile);
          CustomerProfile customerProfile1 = customerProfileRepo.save(customerProfile);
 //        System.out.println("CP 2 :"+customerProfile1);
@@ -57,7 +58,7 @@ public class CustomerServiceIMPL implements CustomerService {
         CustomerProject customerProject = customerProjectRepo.findById(bug.getCustomerProject().getProjectId()).get();
 //        System.out.println("Customer Project 1 : " +customerProject);
         bug.setCustomerProject(customerProject);
-        bug.setCreated_date(LocalDate.now());
+        bug.setCreatedDate(LocalDate.now());
 //        System.out.println("Bug 2 : "+ bug);
         return dtoHelper.getBugDto(bugRepo.save(bug));
     }

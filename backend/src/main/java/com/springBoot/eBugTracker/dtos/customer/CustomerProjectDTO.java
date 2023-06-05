@@ -16,6 +16,8 @@ public class CustomerProjectDTO {
     private String projectName;
     private String projectDomain;
     private String projectDesc;
+    private String projectStatus;
     private LocalDate createdDate;
+    private LocalDate endDate;
     private CustomerProfileDTO customerProfile;
 }

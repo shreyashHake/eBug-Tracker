@@ -16,6 +16,8 @@ public class BugDTO {
     private String bug_title;
     private String bug_desc;
     private String bug_status;
+    private String bug_priority;
     private LocalDate createdDate;
+    private LocalDate endDate;
     private CustomerProjectDTO customerProject;
 }
