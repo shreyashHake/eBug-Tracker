@@ -18,6 +18,7 @@ import { UserService } from './_services/user.service';
 import { RegisterComponent } from './register/register.component';
 import { CustomerComponent } from './customer/customer.component';
 import { StaffComponent } from './staff/staff.component';
+import { LoginLandingComponent } from './login-landing/login-landing.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StaffComponent } from './staff/staff.component';
     ForbiddenComponent,
     RegisterComponent,
     CustomerComponent,
-    StaffComponent],
+    StaffComponent,
+    LoginLandingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
