@@ -19,7 +19,7 @@ import java.util.List;
 @Entity
 public class CustomerProfile {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerProfileId;
     private String customerName;
     private String customerCompany;

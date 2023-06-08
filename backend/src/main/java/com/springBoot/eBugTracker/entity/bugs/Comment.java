@@ -15,12 +15,13 @@ import java.time.LocalDateTime;
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int commentId;
     private int commentNumber;
     private String comment;
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime commentDateTime;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bugProcessId",nullable = false)
     private BugProcess bugProcess;
 }

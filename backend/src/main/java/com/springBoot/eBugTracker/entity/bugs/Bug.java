@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @Entity
 public class Bug {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bugId;
     private String bugTitle;
     private String bugDesc;
@@ -27,7 +27,7 @@ public class Bug {
     private LocalDate createdDate;
     @JsonIgnore
     private LocalDate endDate;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "projectId",nullable = false,referencedColumnName = "projectId")
     private CustomerProject customerProject;
 }

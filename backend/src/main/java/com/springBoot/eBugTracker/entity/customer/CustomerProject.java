@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 public class CustomerProject {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectId;
     private String projectName;
     private String projectDomain;
@@ -28,7 +28,7 @@ public class CustomerProject {
     private LocalDate createdDate;
     @JsonIgnore
     private LocalDate endDate;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customerProfileId",nullable = false,referencedColumnName = "customerProfileId")
     private CustomerProfile customerProfile;
 

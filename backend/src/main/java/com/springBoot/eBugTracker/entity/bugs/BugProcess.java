@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,16 +17,16 @@ import java.util.List;
 @Entity
 public class BugProcess {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bugProcessId;
     private String GlobalStatus;
     @OneToOne
     @JoinColumn(name = "staffProfileId",referencedColumnName = "staffProfileId")
     private StaffProfile staffProfile;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="BugId",nullable = false,referencedColumnName = "BugId")
     private Bug bug;
-    @OneToMany(mappedBy = "bugProcess")
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "bugProcess",cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();;
 
 }
