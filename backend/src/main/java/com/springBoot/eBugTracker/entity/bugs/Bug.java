@@ -1,6 +1,7 @@
-package com.springBoot.eBugTracker.entity.customer;
+package com.springBoot.eBugTracker.entity.bugs;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.springBoot.eBugTracker.entity.customer.CustomerProject;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

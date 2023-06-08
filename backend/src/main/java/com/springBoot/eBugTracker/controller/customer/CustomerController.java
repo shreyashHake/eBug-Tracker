@@ -1,9 +1,9 @@
 package com.springBoot.eBugTracker.controller.customer;
 
-import com.springBoot.eBugTracker.dtos.customer.BugDTO;
+import com.springBoot.eBugTracker.dtos.bugs.BugDTO;
 import com.springBoot.eBugTracker.dtos.customer.CustomerProfileDTO;
 import com.springBoot.eBugTracker.dtos.customer.CustomerProjectDTO;
-import com.springBoot.eBugTracker.entity.customer.Bug;
+import com.springBoot.eBugTracker.entity.bugs.Bug;
 import com.springBoot.eBugTracker.entity.customer.CustomerProfile;
 import com.springBoot.eBugTracker.entity.customer.CustomerProject;
 import com.springBoot.eBugTracker.service.customer.CustomerService;

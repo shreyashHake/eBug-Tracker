@@ -28,7 +28,10 @@ public class CustomerProfile {
     @JsonIgnore
     private LocalDate createdDate;
     @OneToOne
-    @JoinColumn(name = "userName",nullable = false,referencedColumnName = "userName")
+    @JoinColumn(name = "userName", nullable = false, referencedColumnName = "userName")
     private User user;
-
 }
+//    @OneToMany
+//    @JoinColumn(name = "customerProjectId",nullable = true,referencedColumnName = "customerProjectId")
+//    private List<CustomerProject> customerProjects;
+

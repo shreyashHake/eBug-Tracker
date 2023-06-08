@@ -1,6 +1,6 @@
 package com.springBoot.eBugTracker.repository.customer;
 
-import com.springBoot.eBugTracker.entity.customer.Bug;
+import com.springBoot.eBugTracker.entity.bugs.Bug;
 import com.springBoot.eBugTracker.entity.customer.CustomerProject;
 import org.springframework.data.jpa.repository.JpaRepository;
 

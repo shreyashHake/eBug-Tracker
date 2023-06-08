@@ -1,13 +1,16 @@
 package com.springBoot.eBugTracker.service.customer;
 
-import com.springBoot.eBugTracker.dtos.customer.BugDTO;
+import com.springBoot.eBugTracker.dtos.bugs.BugDTO;
+import com.springBoot.eBugTracker.dtos.bugs.BugProcessDTO;
 import com.springBoot.eBugTracker.dtos.customer.CustomerProfileDTO;
 import com.springBoot.eBugTracker.dtos.customer.CustomerProjectDTO;
 import com.springBoot.eBugTracker.entity.User;
-import com.springBoot.eBugTracker.entity.customer.Bug;
+import com.springBoot.eBugTracker.entity.bugs.Bug;
+import com.springBoot.eBugTracker.entity.bugs.BugProcess;
 import com.springBoot.eBugTracker.entity.customer.CustomerProfile;
 import com.springBoot.eBugTracker.entity.customer.CustomerProject;
 import com.springBoot.eBugTracker.repository.IUserRepository;
+import com.springBoot.eBugTracker.repository.bugs.BugProcessRepo;
 import com.springBoot.eBugTracker.repository.customer.BugRepo;
 import com.springBoot.eBugTracker.repository.customer.CustomerProfileRepo;
 import com.springBoot.eBugTracker.repository.customer.CustomerProjectRepo;
@@ -29,6 +32,8 @@ public class CustomerServiceIMPL implements CustomerService {
     private CustomerProjectRepo customerProjectRepo;
     @Autowired
     private BugRepo bugRepo;
+    @Autowired
+    private BugProcessRepo bugProcessRepo;
     @Autowired
     private DtoHelper dtoHelper;
     @Override
@@ -59,8 +64,14 @@ public class CustomerServiceIMPL implements CustomerService {
 //        System.out.println("Customer Project 1 : " +customerProject);
         bug.setCustomerProject(customerProject);
         bug.setCreatedDate(LocalDate.now());
+        BugDTO bugDTO = dtoHelper.getBugDto(bugRepo.save(bug));
 //        System.out.println("Bug 2 : "+ bug);
-        return dtoHelper.getBugDto(bugRepo.save(bug));
+        BugProcess bugProcess = new BugProcess();
+        bugProcess.setGlobalStatus("Waiting for staff");
+        bugProcess.setBug(bug);
+        bugProcessRepo.save(bugProcess);
+
+        return bugDTO;
     }
 
     @Override
