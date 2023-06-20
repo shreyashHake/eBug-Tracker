@@ -1,22 +1,27 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../_services/user.service';
+import { StaffService } from 'src/app/_services/staff.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-add-staff',
+  templateUrl: './add-staff.component.html',
+  styleUrls: ['./add-staff.component.scss']
 })
-export class RegisterComponent {
+export class AddStaffComponent {
   registerForm!: FormGroup;
 
   passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{6,}$/;
 
   constructor(
     private userService: UserService,
+    private staffService: StaffService,
     private router: Router
-  ) {  }
+  ) {
+    this.initializeForm();
+
+   }
 
   initializeForm() {
     this.registerForm = new FormGroup({
@@ -29,14 +34,14 @@ export class RegisterComponent {
 
   ngOnInit(): void {
     this.initializeForm();
+
   }
 
   register() {
-    console.log(this.registerForm);
-    this.userService.registerCustomer(this.registerForm.value).subscribe({
+    this.staffService.registerStaff(this.registerForm.value).subscribe({
       next: (response) => {
         this.registerForm.reset();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/staff-handling']);
       },
       error: (err) => {
         console.log(err);
@@ -44,4 +49,20 @@ export class RegisterComponent {
       }
     })
   }
+
+  public backToStaff() {
+    this.router.navigate((["/staff-handling"]))
+  }
+
+  public getAll() {
+    this.staffService.getAlluser().subscribe({
+      next: (response) => {
+        console.log(response)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
 }
